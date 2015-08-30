@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using DomainNotificationHelper.Events;
@@ -84,6 +85,37 @@ namespace DomainNotificationHelper.Validation
         {
             return (!(value1 >= value2))
                 ? new DomainNotification("AssertArgumentTrue", message)
+                : null;
+        }
+
+        public static DomainNotification AssertRegexMatch(string value, string regex, string message)
+        {
+            return (!Regex.IsMatch(value, regex, RegexOptions.IgnoreCase))
+                ? new DomainNotification("AssertRegexNotMatch", message)
+                : null;
+        }
+
+        public static DomainNotification AssertEmailIsValid(string email, string message)
+        {
+            var emailRegex =
+                @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+
+            return (!Regex.IsMatch(email, emailRegex, RegexOptions.IgnoreCase))
+                ? new DomainNotification("AssertEmailIsInvalid", message)
+                : null;
+        }
+
+        public static DomainNotification AssertUrlIsValid(string url, string message)
+        {
+            // Do not validate if no URL is provided
+            // You can call AssertNotEmpty before this if you want
+            if (String.IsNullOrEmpty(url))
+                return null;
+
+            var regex = @"^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$";
+
+            return (!Regex.IsMatch(url, regex, RegexOptions.IgnoreCase))
+                ? new DomainNotification("AssertUrlIsInvalid", message)
                 : null;
         }
     }

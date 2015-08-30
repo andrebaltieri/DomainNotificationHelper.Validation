@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainNotificationHelper.Validation", "DomainNotificationHelper.Validation.csproj", "{C1BF1087-B5BB-4ED6-B2BD-2791754F726C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainNotificationHelper.Validation.Tests", "..\DomainNotificationHelper.Validation.Tests\DomainNotificationHelper.Validation.Tests.csproj", "{9631FDA6-6DDD-4F67-AE9D-2FEF728CC277}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C1BF1087-B5BB-4ED6-B2BD-2791754F726C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1BF1087-B5BB-4ED6-B2BD-2791754F726C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1BF1087-B5BB-4ED6-B2BD-2791754F726C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9631FDA6-6DDD-4F67-AE9D-2FEF728CC277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9631FDA6-6DDD-4F67-AE9D-2FEF728CC277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9631FDA6-6DDD-4F67-AE9D-2FEF728CC277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9631FDA6-6DDD-4F67-AE9D-2FEF728CC277}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
