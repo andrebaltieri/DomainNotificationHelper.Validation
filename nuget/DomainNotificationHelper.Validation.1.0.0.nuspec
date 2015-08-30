@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>DomainNotificationHelper.Validation</id>
+        <version>1.0.0</version>
+        <title>DomainNotificationHelper.Validation</title>
+        <authors>andrebaltieri</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>This package allows you to work with Assertion (Assertion Concern) using DomainNotificationHelper packages.</description>
+        <dependencies>
+            <dependency id="DomainNotificationHelper" version="1.0.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\src\bin\Release\DomainNotificationHelper.Validation.dll" target="lib\DomainNotificationHelper.Validation.dll" />
+    </files>
+</package>
