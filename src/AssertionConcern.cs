@@ -53,6 +53,13 @@ namespace DomainNotificationHelper.Validation
                 : null;
         }
 
+        public static DomainNotification AssertIsNull(object object1, string message)
+        {
+            return (object1 != null)
+                ? new DomainNotification("AssertArgumentNull", message)
+                : null;
+        }
+
         public static DomainNotification AssertTrue(bool boolValue, string message)
         {
             return (!boolValue)

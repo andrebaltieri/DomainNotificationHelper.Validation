@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DomainNotificationHelper.Validation.Tests
 {
@@ -50,6 +51,13 @@ namespace DomainNotificationHelper.Validation.Tests
         public void AssertUrlIsInvalid()
         {
             var res = AssertionConcern.AssertUrlIsValid("agá tê tê pê dois pontos barra barra andrebaltieri.net", "URL inválido");
+            Assert.IsNotNull(res);
+        }
+
+        [TestMethod]
+        public void AssertIsNull()
+        {
+            var res = AssertionConcern.AssertIsNull(DateTime.Now, "Well... it is not null!");
             Assert.IsNotNull(res);
         }
     }
