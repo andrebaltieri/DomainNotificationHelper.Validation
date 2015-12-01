@@ -126,9 +126,9 @@ namespace DomainNotificationHelper.Validation
                 : null;
         }
 
-        public static DomainNotification AssertCPFIsValid(string cpf, string message)
+        public static DomainNotification AssertCpfIsValid(string cpf, string message)
         {
-            // Do not validate if no URL is provided
+            // Do not validate if no CPF is provided
             // You can call AssertNotEmpty before this if you want
             if (string.IsNullOrEmpty(cpf))
                 return null;
