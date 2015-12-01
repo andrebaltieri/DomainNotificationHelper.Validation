@@ -4,9 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DomainNotificationHelper.Validation.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class AssertionConcernTests
     {
         [TestMethod]
+        [TestCategory("AssertRegexMatch")]
         public void AssertRegexIsValid()
         {
             var emailRegex =
@@ -17,6 +18,7 @@ namespace DomainNotificationHelper.Validation.Tests
         }
 
         [TestMethod]
+        [TestCategory("AssertRegexMatch")]
         public void AssertRegexIsInvalid()
         {
             var emailRegex =
@@ -27,6 +29,7 @@ namespace DomainNotificationHelper.Validation.Tests
         }
 
         [TestMethod]
+        [TestCategory("AssertEmailIsValid")]
         public void AssertEmailIsValid()
         {
             var res = AssertionConcern.AssertEmailIsValid("andrebaltieri@hotmail.com", "E-mail inválido");
@@ -34,6 +37,7 @@ namespace DomainNotificationHelper.Validation.Tests
         }
 
         [TestMethod]
+        [TestCategory("AssertEmailIsValid")]
         public void AssertEmailIsInvalid()
         {
             var res = AssertionConcern.AssertEmailIsValid("andrebaltieri[at]hotmail[dot]com", "E-mail inválido");
@@ -41,6 +45,7 @@ namespace DomainNotificationHelper.Validation.Tests
         }
 
         [TestMethod]
+        [TestCategory("AssertUrlIsValid")]
         public void AssertUrlIsValid()
         {
             var res = AssertionConcern.AssertUrlIsValid("http://andrebaltieri.net/", "URL inválida");
@@ -48,6 +53,7 @@ namespace DomainNotificationHelper.Validation.Tests
         }
 
         [TestMethod]
+        [TestCategory("AssertUrlIsValid")]
         public void AssertUrlIsInvalid()
         {
             var res = AssertionConcern.AssertUrlIsValid("agá tê tê pê dois pontos barra barra andrebaltieri.net", "URL inválido");
@@ -55,9 +61,37 @@ namespace DomainNotificationHelper.Validation.Tests
         }
 
         [TestMethod]
+        [TestCategory("AssertIsNull")]
         public void AssertIsNull()
         {
             var res = AssertionConcern.AssertIsNull(DateTime.Now, "Well... it is not null!");
+            Assert.IsNotNull(res);
+        }
+
+        [TestMethod]
+        [TestCategory("AssertCPFIsValid")]
+        public void AssertCpfIsValid()
+        {
+            var cpf = "943.754.516-29";
+            var res = AssertionConcern.AssertCPFIsValid(cpf, "CPF inválido.");
+            Assert.IsNull(res);
+        }
+
+        [TestMethod]
+        [TestCategory("AssertCPFIsValid")]
+        public void AssertCpfIsInvalid()
+        {
+            var cpf = "943.754.516-54";
+            var res = AssertionConcern.AssertCPFIsValid(cpf, "CPF inválido.");
+            Assert.IsNotNull(res);
+        }
+
+        [TestMethod]
+        [TestCategory("AssertCPFIsValid")]
+        public void AssertCpfIsInvalidWhenRepeatDigit()
+        {
+            var cpf = "11111111111";
+            var res = AssertionConcern.AssertCPFIsValid(cpf, "CPF inválido.");
             Assert.IsNotNull(res);
         }
     }
