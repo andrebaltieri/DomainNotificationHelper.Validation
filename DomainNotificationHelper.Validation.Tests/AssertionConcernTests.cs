@@ -73,7 +73,7 @@ namespace DomainNotificationHelper.Validation.Tests
         public void AssertCpfIsValid()
         {
             var cpf = "943.754.516-29";
-            var res = AssertionConcern.AssertCPFIsValid(cpf, "CPF inválido.");
+            var res = AssertionConcern.AssertCpfIsValid(cpf, "CPF inválido.");
             Assert.IsNull(res);
         }
 
@@ -82,7 +82,7 @@ namespace DomainNotificationHelper.Validation.Tests
         public void AssertCpfIsInvalid()
         {
             var cpf = "943.754.516-54";
-            var res = AssertionConcern.AssertCPFIsValid(cpf, "CPF inválido.");
+            var res = AssertionConcern.AssertCpfIsValid(cpf, "CPF inválido.");
             Assert.IsNotNull(res);
         }
 
@@ -91,8 +91,35 @@ namespace DomainNotificationHelper.Validation.Tests
         public void AssertCpfIsInvalidWhenRepeatDigit()
         {
             var cpf = "11111111111";
-            var res = AssertionConcern.AssertCPFIsValid(cpf, "CPF inválido.");
+            var res = AssertionConcern.AssertCpfIsValid(cpf, "CPF inválido.");
             Assert.IsNotNull(res);
+        }
+
+        [TestMethod]
+        [TestCategory("AssertCNPJIsValid")]
+        public void AssertCnpjIsValid()
+        {
+            var cnpj = "24.219.611/0001-93";
+            var result = AssertionConcern.AssertCnpjIsValid(cnpj, "CNPJ inválido.");
+            Assert.IsNull(result);
+        }
+
+        [TestMethod]
+        [TestCategory("AssertCNPJIsValid")]
+        public void AssertCnpjIsInvalid()
+        {
+            var cnpj = "24.219.666/0001-93";
+            var result = AssertionConcern.AssertCnpjIsValid(cnpj, "CNPJ inválido.");
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        [TestCategory("AssertCNPJIsValid")]
+        public void AssertCnpjIsInvalidWhenRepeatDigit()
+        {
+            var cnpj = "11.111.111/0001-11";
+            var result = AssertionConcern.AssertCnpjIsValid(cnpj, "CNPJ inválido.");
+            Assert.IsNotNull(result);
         }
     }
 }

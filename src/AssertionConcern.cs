@@ -171,5 +171,55 @@ namespace DomainNotificationHelper.Validation
 
             return (!cpf.EndsWith(digit)) ? new DomainNotification("AssertUrlIsInvalid", message) : null;
         }
+
+        public static DomainNotification AssertCnpjIsValid(string cnpj, string message)
+        {
+            // Do not validate if no CNPJ is provided
+            // You can call AssertNotEmpty before this if you want
+            if (string.IsNullOrEmpty(cnpj))
+                return null;
+
+            cnpj = cnpj
+                .Replace(".", "")
+                .Replace("-", "")
+                .Replace("/", "")
+                .Trim();
+
+            if (cnpj.Length != 14)
+                return new DomainNotification("AssertCPFIsInvalid", message);
+
+            if (cnpj.Any(t => cnpj.Replace(t.ToString(), "").Length <= 2))
+                return new DomainNotification("AssertCPFIsInvalid", message);
+
+            //Start validation
+            var sum = 0;
+            var primaryVector = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            var secondVector = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+            for (var count = 0; count < 12; count++)
+                sum += int.Parse(cnpj[count].ToString()) * primaryVector[count];
+
+            var rest = sum % 11;
+            if (rest < 2)
+                rest = 0;
+            else
+                rest = 11 - rest;
+
+            var digit = rest.ToString();
+
+            sum = 0;
+            for (var count = 0; count < 13; count++)
+                sum += int.Parse(cnpj[count].ToString()) * secondVector[count];
+
+            rest = sum % 11;
+            if (rest < 2)
+                rest = 0;
+            else
+                rest = 11 - rest;
+
+            digit += rest.ToString();
+
+            return (!cnpj.EndsWith(digit)) ? new DomainNotification("AssertUrlIsInvalid", message) : null;
+        }
     }
 }
