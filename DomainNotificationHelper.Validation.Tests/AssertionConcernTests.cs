@@ -60,5 +60,14 @@ namespace DomainNotificationHelper.Validation.Tests
             var res = AssertionConcern.AssertIsNull(DateTime.Now, "Well... it is not null!");
             Assert.IsNotNull(res);
         }
+
+        [TestMethod]
+        public void AssertIsNotEmptyIfConditionTrue()
+        {
+            bool active = false;
+
+            var res = AssertionConcern.AssertIsNotEmptyIfConditionTrue("Why this is inactive?", !active, "Please, tell me why this is inactive.");
+            Assert.IsNull(res);
+        }
     }
 }
