@@ -81,6 +81,13 @@ namespace DomainNotificationHelper.Validation
                 : null;
         }
 
+        public static DomainNotification AssertIsGreaterThan(DateTime value1, DateTime value2, string message)
+        {
+            return (!(value1 > value2))
+                ? new DomainNotification("AssertArgumentTrue", message)
+                : null;
+        }
+
         public static DomainNotification AssertIsGreaterThan(decimal value1, decimal value2, string message)
         {
             return (!(value1 > value2))
@@ -123,6 +130,27 @@ namespace DomainNotificationHelper.Validation
 
             return (!Regex.IsMatch(url, regex, RegexOptions.IgnoreCase))
                 ? new DomainNotification("AssertUrlIsInvalid", message)
+                : null;
+        }
+
+        public static DomainNotification AssertIsBetween(DateTime value1, DateTime value2, DateTime value3, string message)
+        {
+            var isBetween = false;
+
+            if (value2 < value3)
+                isBetween = value2 <= value1 && value1 <= value3;
+            else
+                isBetween = !(value3 < value1 && value1 < value2);
+
+            return (!isBetween)
+                ? new DomainNotification("AssertArgumentBetween", message)
+                : null;
+        }
+
+        public static DomainNotification AssertIsBetween(int value1, int value2, int value3, string message)
+        {
+            return (!(value1 >= value2 && value1 <= value3))
+                ? new DomainNotification("AssertArgumentBetween", message)
                 : null;
         }
     }
