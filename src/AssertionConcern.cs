@@ -238,5 +238,12 @@ namespace DomainNotificationHelper.Validation
                 ? new DomainNotification("AssertUrlIsInvalid", message)
                 : null;
         }
+
+        public static DomainNotification AssertIsNotEmptyIfConditionTrue(string stringValue, bool condition,string message)
+        {
+            return (string.IsNullOrEmpty(stringValue) && condition)
+                ? new DomainNotification("AssertArgumentNotEmpty", message)
+                : null;
+        }
     }
 }

@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DomainNotificationHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\DomainNotificationHelper.1.0.0\lib\DomainNotificationHelper.dll</HintPath>
+      <HintPath>packages\DomainNotificationHelper.1.0.1\lib\DomainNotificationHelper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
