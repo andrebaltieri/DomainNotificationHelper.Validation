@@ -60,5 +60,26 @@ namespace DomainNotificationHelper.Validation.Tests
             var res = AssertionConcern.AssertIsNull(DateTime.Now, "Well... it is not null!");
             Assert.IsNotNull(res);
         }
+
+        [TestMethod]
+        public void AssertLengthIsValid()
+        {
+            var res = AssertionConcern.AssertLength("abc", 2, 10, "A string deve possuir dentre 2 e 10 caracteres");
+            Assert.IsNull(res);   
+        }
+
+        [TestMethod]
+        public void AssertLengthIsInvalidA()
+        {
+            var res = AssertionConcern.AssertLength(null, 2, 10, "A string deve possuir dentre 2 e 10 caracteres");
+            Assert.IsNotNull(res);
+        }
+
+        [TestMethod]
+        public void AssertLengthIsInvalidB()
+        {
+            var res = AssertionConcern.AssertLength("y", 2, 10, "A string deve possuir dentre 2 e 10 caracteres");
+            Assert.IsNotNull(res);
+        }
     }
 }
