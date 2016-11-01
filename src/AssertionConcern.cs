@@ -31,7 +31,7 @@ namespace DomainNotificationHelper.Validation
         /// <returns>DomainNotification object</returns>
         public static DomainNotification AssertLength(string stringValue, int minimum, int maximum, string message)
         {
-            var length = stringValue.Trim().Length;
+            var length = stringValue?.Trim().Length ?? 0;
 
             return (length < minimum || length > maximum)
                 ? new DomainNotification("AssertArgumentLength", message)
